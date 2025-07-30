@@ -21,7 +21,10 @@ function App() {
           id="firstName"
           type="text"
           required
-          onChange={(e) => setFirstName(e.target.value)}
+          onChange={(e) => {
+            setSubmitClicked(false);
+            setFirstName(e.target.value);
+          }}
         />
         <br />
         <label htmlFor="lastName">Last Name :</label>
@@ -29,13 +32,18 @@ function App() {
           id="lastName"
           type="text"
           required
-          onChange={(e) => setLastName(e.target.value)}
+          onChange={(e) => {
+            setSubmitClicked(false);
+            setLastName(e.target.value);
+          }}
         />
         <br />
 
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
-      Full Name : {submitClicked ? `${firstName} ${lastName}` : ""}
+      {submitClicked && (
+        <p>Full Name:{submitClicked ? ` ${firstName} ${lastName}` : ""}</p>
+      )}
     </>
   );
 }
